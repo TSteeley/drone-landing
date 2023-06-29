@@ -87,7 +87,7 @@ class gameState:
         self.score = 0
         self.prevScore = 0
         self.withinTarget = 0
-        self.prevDist = dist(player.pos, self.targetPos)
+        # self.prevDist = dist(player.pos, self.targetPos)
         
         
 dist = lambda pos1,pos2: ((pos1[0]-pos2[0])**2+(pos1[1]-pos2[1])**2)**0.5
