@@ -42,7 +42,7 @@ class gameState:
         # [4] score for approaching target
         # [5] penalty for leaving target
         # [6] out of bounds penalty
-        score = [10, 1, 3, 50, 1, 1, -2**16]
+        score = [10, 1, 3, 200, 1, 1, -200]
         toTarg = dist(self.targetPos, tuple(player.pos))
         
         if any([player.pos.x//1 not in range(self.screenSize[0]), player.pos.y//1 not in range(self.screenSize[1])]):

@@ -3,6 +3,7 @@ from brains import *
 from gameState import gameState
 from tensorflow import keras
 import stable_baselines3
+import os
 
 def pyGame2D(player: AI_player):
     # Initialise pygame environment
@@ -40,8 +41,9 @@ def pyGame2D(player: AI_player):
         
         pygame.display.flip()
 
-        print(player.engines.get_Throttle(), state.dScore)
-        
+# Diagnostic info in terminal for analysis and debugging
+        os.system('cls')
+        print(player.engines.get_Throttle(), '\n', state.dScore)
         state.set_dt(clock.tick(60) / 250)
 
     pygame.quit()
