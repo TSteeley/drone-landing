@@ -11,13 +11,14 @@ class gameState:
     def __init__(self, screenSize, player):
         self.dt = 0.017
         self.score = 0
+        self.dScore = 0
         self.prevScore = 0
         self.withinTarget = 0
-        self.prevDist = 0
         self.running = True
         self.screenSize = screenSize
-        self.targetPos = tuple(player.pos)
-        self.targetHome = tuple(player.pos)
+        self.targetPos = [player.pos[0], player.pos[1]-200]
+        self.targetHome = [player.pos[0], player.pos[1]-200]
+        self.prevDist = dist(player.pos, self.targetPos)
         self.targetImage = pygame.transform.scale(pygame.image.load("red_dot.png"), (200,200))
         
     def set_dt(self, dt):
@@ -47,11 +48,10 @@ class gameState:
         
         if any([player.pos.x//1 not in range(self.screenSize[0]), player.pos.y//1 not in range(self.screenSize[1])]):
             self.score = 0
+            self.prevScore = 0
             self.dScore = score[6]
             player.reset()
-            # If you're confused about setting prevdist to 50 this is why. When the vehicle skips back to origin it frequently gets 
-            # much closer to the target position. 
-            self.prevDist = 50
+            self.prevDist = dist(player.pos, self.targetPos)
             return True
         
         # Check if near target for longer than [2]
@@ -87,7 +87,7 @@ class gameState:
         self.score = 0
         self.prevScore = 0
         self.withinTarget = 0
-        self.prevDist = 0
+        self.prevDist = dist(player.pos, self.targetPos)
         
         
-dist = lambda x,y: ((x[0]-y[0])**2+(x[1]-y[1])**2)**0.5
+dist = lambda pos1,pos2: ((pos1[0]-pos2[0])**2+(pos1[1]-pos2[1])**2)**0.5
