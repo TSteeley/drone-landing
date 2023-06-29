@@ -37,7 +37,7 @@ class engine:
             self.location = location
             self.maxThrust = maxthrust
             self.maxGimble = maxGimble
-            self.throttle = 0
+            self.throttle = 0.8
             self.restAngle = restAngle
             self.gimble = 0
         else:

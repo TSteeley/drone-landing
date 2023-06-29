@@ -1,0 +1,10 @@
+droneLanding/
+droneBrainV1/
+__pycache__/
+m/
+createNN.ipynb
+module.py
+test.ipynb
+testing.ipynb
+launch.json
+visualisation.ipynb
