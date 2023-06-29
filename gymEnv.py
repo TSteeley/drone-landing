@@ -28,6 +28,7 @@ class droneLanding(gym.Env):
     def step(self, action):
         self.player.engines.set_Throttle(action)
         self.player.physics_update(self.state.dt)
+        self.player.env_update(self.state)
         terminated = self.state.update(self.player)
         return np.array(self.player.observations, dtype="float32"), self.state.dScore, terminated, False, {}
 
@@ -37,7 +38,7 @@ class droneLanding(gym.Env):
         self.state.reset()
         self.player.reset()
         self.player.env_update(self.state)
-        return np.array(self.player.observations, dtype="float32") , {}
+        return np.array(self.player.observations, dtype="float32"), {}
 
     # def render(self, mode='human'):
     #     ...

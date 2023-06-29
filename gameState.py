@@ -40,13 +40,14 @@ class gameState:
         # [2] If drone is within target radius for [2] time it succeeds gets a bonus and target moves
         # [3] Points for succesfully being near target for target time
         # [4] score for approaching target
-        # [5] score for leaving target
+        # [5] penalty for leaving target
         # [6] out of bounds penalty
-        score = [10, 1, 2, 50, 1, 1, 100]
+        score = [10, 1, 3, 50, 1, 1, -2**16]
         toTarg = dist(self.targetPos, tuple(player.pos))
         
         if any([player.pos.x//1 not in range(self.screenSize[0]), player.pos.y//1 not in range(self.screenSize[1])]):
-            self.score -= score[6]
+            self.score = 0
+            self.dScore = score[6]
             player.reset()
             # If you're confused about setting prevdist to 50 this is why. When the vehicle skips back to origin it frequently gets 
             # much closer to the target position. 

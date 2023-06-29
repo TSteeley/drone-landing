@@ -40,7 +40,7 @@ def pyGame2D(player: AI_player):
         
         pygame.display.flip()
 
-        print(player.engines.get_Throttle())
+        print(player.engines.get_Throttle(), state.dScore)
         
         state.set_dt(clock.tick(60) / 250)
 
@@ -48,6 +48,7 @@ def pyGame2D(player: AI_player):
 
 if __name__ == '__main__':
     # model = keras.models.load_model('DroneBrainV1')
+    # model = stable_baselines3.PPO.load("collabVersion.zip")
     model = stable_baselines3.PPO.load("First PPO Model.zip")
     
     pyGame2D(AI_player(model))
